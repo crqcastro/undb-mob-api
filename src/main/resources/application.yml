@@ -1,0 +1,29 @@
+spring:
+ profiles:
+  active: dev
+server:
+  port: 9000
+management:
+  endpoint:
+    health:
+      show-details: always  
+---
+spring:
+ profiles: dev
+ 
+ datasource:
+   url: jdbc:mysql://localhost:3306/undb?autoReconnect=true&useSSL=false&useTimezone=true&serverTimezone=UTC
+   username: undb
+   password: undb
+   driver-class-name: com.mysql.jdbc.Driver
+ jpa:
+#  database:
+#    database-platform: org.hibernate.dialect.MySQL5Dialect
+  hibernate.ddl-auto: update
+  generate-ddl: true
+  show-sql: true
+security:
+ jwt:
+  token:
+    secret-key: Ni7gd7hiwfbuqwei7gG@I@BNDWOQnd+XOnKanLJSNUnunkn
+    expire-length: 3600000
