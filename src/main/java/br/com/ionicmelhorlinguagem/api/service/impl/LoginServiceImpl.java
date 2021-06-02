@@ -29,6 +29,8 @@ public class LoginServiceImpl implements LoginService {
 	public Optional<UserDetailsModel> findByUserNameAndPassword(String username, String password) {
 		 Optional<UserDetailsModel> user  = this.userRepository.findByUsername(username);
 
+		 if(user.isEmpty()) throw new BusinessException(ExceptionsTypeEnum.USER_NOT_FOUND);
+		 
 		 Boolean matches = passwordEncoder.matches(password, user.get().getPassword());
 
 		 if(!matches) throw new BusinessException(ExceptionsTypeEnum.USER_NOT_FOUND);
