@@ -33,7 +33,7 @@ public class FaturaController {
 		if(contrato.compareTo(CONTRATO)!=0) throw new BusinessException(ExceptionsTypeEnum.CONTRATO_NOT_FOUND);
 		byte[] inFileBytes = Files.readAllBytes(FileHelper.getFile(QUITADA_FILE).toPath());
 		byte[] encoded = java.util.Base64.getEncoder().encode(inFileBytes);
-		return ResponseEntity.ok(encoded);
+		return ResponseEntity.ok(inFileBytes);
 	}
 	
 	@GetMapping(path = "/debito/{contrato}", produces = MediaType.APPLICATION_PDF_VALUE)
@@ -41,6 +41,6 @@ public class FaturaController {
 		if(contrato.compareTo(CONTRATO)!=0) throw new BusinessException(ExceptionsTypeEnum.CONTRATO_NOT_FOUND);
 		byte[] inFileBytes = Files.readAllBytes(FileHelper.getFile(DEBITO_FILE).toPath());
 		byte[] encoded = java.util.Base64.getEncoder().encode(inFileBytes);
-		return ResponseEntity.ok(encoded);
+		return ResponseEntity.ok(inFileBytes);
 	}
 }
