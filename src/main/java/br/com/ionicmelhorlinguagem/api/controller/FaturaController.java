@@ -5,6 +5,7 @@ import java.nio.file.Files;
 
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import br.com.ionicmelhorlinguagem.api.exceptions.BusinessException;
 import br.com.ionicmelhorlinguagem.api.exceptions.ExceptionsTypeEnum;
 import br.com.ionicmelhorlinguagem.api.helpers.FileHelper;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping(path = "/fatura")
 public class FaturaController {
